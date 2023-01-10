@@ -495,12 +495,12 @@ function loadNextMob() {
 
 },{"./chooseClass":11,"./displayCharacterInfo":13,"./displayMobInfo":14,"./displayMoveChoice":15,"./mobs/mobs":20,"./setActiveMob":22,"./toggleCharacterInfoDisplay":23,"./toggleFightButton":24,"./toggleMoveChoiceDisplay":26,"./toggleNextMobDisplay":27,"./waitForMovechoice":28}],17:[function(require,module,exports){
 const Mob = require("./mob")
-const dragon = new Mob("dragon", 25, 40);
+const dragon = new Mob("dragon", 20, 30);
 
 module.exports = dragon;
 },{"./mob":19}],18:[function(require,module,exports){
 const Mob = require("./mob")
-const goblin = new Mob("goblin", 10, 20);
+const goblin = new Mob("goblin", 10, 10);
 
 module.exports = goblin;
 
@@ -544,7 +544,7 @@ const mobs = [Goblin, troll, dragon];
 module.exports = mobs;
 },{"./dragon":17,"./goblin":18,"./troll":21}],21:[function(require,module,exports){
 const Mob = require("./mob")
-const troll = new Mob("troll", 20, 30);
+const troll = new Mob("troll", 15, 15);
 
 module.exports = troll;
 },{"./mob":19}],22:[function(require,module,exports){
