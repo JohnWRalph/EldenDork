@@ -1,6 +1,46 @@
+body {
+    background-color: black;
+    color: aliceblue;
+    
+}
+
+header {
+    background-color: rgb(109, 11, 11);
+}
 #combatInformation {
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
-    justify-content:space-between;
+    margin-right: 520px;
     /* align-items: center; */
+}
+
+.classCard {
+    width:200px;
+    height:200px;
+    display: flex;
+    margin-right: 100px;
+    border: 10px solid black;
+    
+}
+
+#classes {
+    display:flex;
+    justify-content: space-between;
+    margin-right: 420px;
+}
+
+#characterInfo {
+    width:50%;
+    display:flex;
+    /* justify-content: space-between; */
+}
+
+/* #mobInfo {
+   display: block;
+} */
+
+#mob-picture {
+    border: 10px solid black;
+    display:none;
 }
