@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+
+<body>
+    WELCOME TO MY GAME!
+    <br>
+
+    FOLLOW THE PROMPTS IN ORDER TO PICK A CLASS AND FIGHT THROUGH A SERIES OF MOBS!!!
+    <br>
+    -----------------------------------------------------------------------------------------------
+    <br>
+    These are the mobs you must defeat in order:
+    <div id="mob0Name"></div>
+    <div id="mob1Name"></div>
+    <div id="mob2Name"></div>
+    -----------------------------------------------------------------------------------------------
+    <h1>Choose a class</h1>
+
+    <button class="character-select" id="bandit" data-class="bandit">Bandit</button>
+    <button class="character-select" id="monk" data-class="monk">Monk</button>
+    <button class="character-select" id="warlock" data-class="warlock">Warlock</button>
+
+
+    <br>
+    <div id="combatInformation">
+
+        <div id="character-info-container" style="display:none">
+            <h1>Character Info</h1>
+            <div id="character-info"></div>
+        </div>
+
+        <div id="mob-info-container" style="display:none;">
+            <h2>Mob Info</h2>
+            <div id="mob-info"></div>
+        </div>
+        <div id="damage-info-container">
+            <h3>Damage Info</h3>
+            <div id="damage-info"></div>
+        </div>
+    </div>
+    <br>
+    -----------------------------------------------------------------------------------------------
+    <br>
+    <div id="move-select-container" style="display:none">
+        <button class="move-select" id="punch" data-class="punch">Punch</button>
+        <button class="move-select" id="weapon" data-class="weapon">Use Weapon</button>
+        <button class="move-select" id="ability" data-class="ability">Use Ability</button>
+        <button class="move-select" id="pets" data-class="pets">Use Pet</button>
+    </div>
+
+    <div id="move-info"></div>
+    <button class="fight-select" id="fightButton" data-class="fights" style="display:none">Use Selected Ability</button>
+    <button class="next-mob-select" id="nextMobButton" data-class="next-mob-select" style="display:none">Face Next Mob</button>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <script src="bundle.js"></script>
+</body>
+
+</html>

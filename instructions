@@ -1,0 +1,7 @@
+ Choose a class, instantiate your character based on that class. Throw an error if that class is not available.
+- Select random mobs to fight, in a "turn based" fighting system.
+- Offer the ability to attack, equip weapon, summon pet, or cast a spell each turn.
+- Level up after a mob is defeated, or game over if you are defeated.
+- IF you defeat all mobs, you win!
+5) Push your updated game to your git repo!
+6) Get someone else to clone you repo and try your game!

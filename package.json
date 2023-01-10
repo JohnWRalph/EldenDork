@@ -1,0 +1,25 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "Game",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify index.js -p esmify > bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnWRalph/game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnWRalph/game/issues"
+  },
+  "homepage": "https://github.com/JohnWRalph/game#readme",
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "esmify": "^2.1.1",
+    "prompt-promise": "^1.0.3"
+  }
+}
