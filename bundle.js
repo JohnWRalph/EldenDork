@@ -361,6 +361,7 @@ const displayMoveChoice = require('./displayMoveChoice');
 const displayMobInfo = require('./displayMobInfo');
 const toggleFightButton = require("./toggleFightButton");
 const toggleNextMobDisplay = require('./toggleNextMobDisplay');
+
 // const chooseMove = require("./chooseMove");
 
 // testing code
@@ -436,39 +437,41 @@ function fight() {
 
         if (event.target.classList.contains("fight-select") && activeMob.health > 0 && character.health > 0) {
             console.log("step3")
-            console.log(character.getDamage(moveChoice));
-            console.log(activeMob.health);
-            console.log(moveChoice);
             activeMob.health = activeMob.health - character.getDamage(moveChoice);
             character.health = character.health - activeMob.attack;
             displayCharacterInfo(character);
             displayMobInfo(activeMob);
-        } else if (event.target.classList.contains("fight-select") && activeMob.health <= 0) {
+            console.log(mobIteration)
+            if (activeMob.health <= 0 && mobIteration < mobs.length - 1) {
+                console.log("You Won! Face Next mob?");
+                displayMobInfo(activeMob);
+                fightButton.disabled = true;
+                nextMobButton.disabled = false;
+                toggleNextMobDisplay();
+                loadNextMob();
+                return;
+            } if (activeMob.health <= 0 && mobIteration == mobs.length - 1) {
+                alert("You've won!");
+                return;
+            } if (character.health <= 0) {
+                alert("You've died");
+                return;
+            }
+            return;
+        } if (event.target.classList.contains("fight-select") && activeMob.health <= 0 && character.health > 0) {
+            if (mobIteration < mobs.length - 1) {
+                console.log("step4")
 
-            console.log("You Won! Face Next mob?");
-            displayMobInfo(activeMob);
-            fightButton.disabled = true;
-            nextMobButton.disabled = false;
-            toggleNextMobDisplay();
-            loadNextMob();
-            return;
-        } else if (event.target.classList.contains("fight-select") && character.health <= 0) {
-            alert("You have died Better luck next time. Reload the page to try again.");
-        } if (character.health <= 0) {
-            alert("You have died. Please try again.");
-            return;
-        } else if (activeMob.health <= 0) {
-            console.log("You Won! Face Next mob?");
-            displayMobInfo(activeMob);
-            fightButton.disabled = true;
-            nextMobButton.disabled = false;
-            toggleNextMobDisplay();
-            loadNextMob();
-            return;
+            } else {
+                alert("You've won the game");
+                return;
+            }
+        } if (character.heath <= 0) {
+            alert("You've died!")
         }
 
-    });
-
+    }
+    )
 }
 
 function loadNextMob() {
