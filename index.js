@@ -100,7 +100,7 @@ function fight() {
                 toggleNextMobDisplay();
                 loadNextMob();
                 return;
-            } if (activeMob.health <= 0 && mobIteration == mobs.length - 1) {
+            } if (activeMob.health <= 0 && character.health >0 && mobIteration == mobs.length - 1) {
                 alert("You've won!");
                 return;
             } if (character.health <= 0) {
