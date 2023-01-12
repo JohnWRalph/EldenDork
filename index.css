@@ -9,31 +9,32 @@ header {
 }
 
 #whole {
-    width:100%;
-    height:400px;
-    display:flex;
+    width: 100%;
+    height: 400px;
+    display: flex;
     /* contain: content; */
-/* border:1px solid white; */
+    /* border:1px solid white; */
     /* flex-direction: column; */
-    display:none;
+    display: none;
 }
 
 #left {
-  width:50%;
-height:100%;
+    width: 50%;
+    height: 100%;
     border: 2px solid white;
     /* contain: content; */
- display:flex;
+    display: flex;
     /* justify-content: space-between; */
 }
 
 
 #right {
-width:50%;
-height:100%;
+    width: 50%;
+    height: 100%;
     border: 2px solid white;
- display:flex;
-   
+    display: flex;
+    text-align: center;
+
 
 }
 
@@ -48,23 +49,29 @@ height:100%;
 .characterArena {
     /* border: 1px solid yellow; */
     height: 100%;
-    width:50%;
-    contain: content;
+    width: 45%;
+    border-right: 1px solid white;
+    /* contain: content; */
 }
 
 #selectedCharacterImage {
-    height:100%;
+    height: 100%;
+    width: 100%
 }
+
 .mobArena {
     /* border: 1px solid pink; */
-    width:50%;
-    height:100%;
-    justify-content: right;
+    width: 45%;
+    height: 100%;
+    margin-left: 10%;
+    border-left: 1px solid white;
 }
+
 #activeMobImage {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
 }
+
 .battle {
     width: 100% display: flex;
 }
@@ -95,21 +102,21 @@ height:100%;
 }
 
 #character-info-container {
-  width:50%;
-  height:100%;
+    width: 50%;
+    height: 100%;
     /* border:1px solid yellow */
 }
 
 #damage-info-container {
-height:50%;
-width:25%;
-/* border:1px solid green */
+    height: 50%;
+    width: 25%;
+    /* border:1px solid green */
 }
 
 #mobInfo {
-height:50%;
-width:25%;
-/* border:1px solid blue; */
+    height: 50%;
+    width: 25%;
+    /* border:1px solid blue; */
 }
 
 #mob-picture {
@@ -120,7 +127,7 @@ width:25%;
 #moveContainer {
     text-align: center;
     /* height:10%; */
-    width:100%;
+    width: 100%;
 }
 
 #move-select-container {
@@ -197,5 +204,5 @@ width:25%;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity:75%;
+    opacity: 75%;
 }
