@@ -51,14 +51,16 @@ class Character {
         } else if (move === "ability") {
             // console.log(this.activeAbility.attack);
             return this.activeAbility.attack;
-        } else if (move === "pets") {
-            if (this.activePets.length = 1) {
+        } else if (move == "pets") {
+     
+            if (this.activePets.length >= 1) {
                 // console.log(this.activePets.attack);
-                return this.activePets.attack;
+                return 15;
             } else {
                 console.log("Selected ability is not equipped");
                 return 0;
             }
+
         }
 
     }

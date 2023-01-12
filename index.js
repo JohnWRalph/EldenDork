@@ -65,7 +65,7 @@ document.addEventListener("click", function (event) {
         // setActiveMob(activeMob);
 
 
-
+        console.log(character);
         console.log(character.getDamage(moveChoice));
 
     } else {
