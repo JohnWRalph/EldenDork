@@ -1,46 +1,201 @@
 body {
     background-color: black;
     color: aliceblue;
-    
+
 }
 
 header {
     background-color: rgb(109, 11, 11);
 }
-#combatInformation {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-right: 520px;
-    /* align-items: center; */
-}
 
-.classCard {
-    width:200px;
-    height:200px;
-    display: flex;
-    margin-right: 100px;
-    border: 10px solid black;
-    
-}
-
-#classes {
+#whole {
+    width:100%;
+    height:400px;
     display:flex;
-    justify-content: space-between;
-    margin-right: 420px;
+    /* contain: content; */
+/* border:1px solid white; */
+    /* flex-direction: column; */
+    display:none;
 }
 
-#characterInfo {
-    width:50%;
-    display:flex;
+#left {
+  width:50%;
+height:100%;
+    border: 2px solid white;
+    /* contain: content; */
+ display:flex;
     /* justify-content: space-between; */
 }
 
-/* #mobInfo {
-   display: block;
+
+#right {
+width:50%;
+height:100%;
+    border: 2px solid white;
+ display:flex;
+   
+
+}
+
+.arena {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    /* border: 1px solid green; */
+}
+
+.characterArena {
+    /* border: 1px solid yellow; */
+    height: 100%;
+    width:50%;
+    contain: content;
+}
+
+#selectedCharacterImage {
+    height:100%;
+}
+.mobArena {
+    /* border: 1px solid pink; */
+    width:50%;
+    height:100%;
+    justify-content: right;
+}
+#activeMobImage {
+    height:100%;
+    width:100%;
+}
+.battle {
+    width: 100% display: flex;
+}
+
+/* #combatInformation {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-right: 520px;
+    
 } */
+
+.classCard {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    margin-right: 100px;
+    border: 10px solid black;
+
+}
+
+#classes {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0;
+    /* border-top: 1px solid white;; */
+}
+
+#character-info-container {
+  width:50%;
+  height:100%;
+    /* border:1px solid yellow */
+}
+
+#damage-info-container {
+height:50%;
+width:25%;
+/* border:1px solid green */
+}
+
+#mobInfo {
+height:50%;
+width:25%;
+/* border:1px solid blue; */
+}
 
 #mob-picture {
     border: 10px solid black;
-    display:none;
+    display: none;
+}
+
+#moveContainer {
+    text-align: center;
+    /* height:10%; */
+    width:100%;
+}
+
+#move-select-container {
+    /* height: 100px; */
+    border: 1px solid white;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+/* Apply the animation to the "shake" class */
+.shake {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+/* Explosion animation */
+@keyframes explosion {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.explosion {
+    animation: explosion 0.5s linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.mobArena {
+    position: relative;
+}
+
+#overlayImage {
+    position: absolute;
+    /*This is important*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity:75%;
 }

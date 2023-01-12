@@ -49,6 +49,7 @@ class Bandit extends Character {
         this.activeAbility = slash;
         this.activeWeapon = dagger;
         // this.activePets.push(startingPet);
+        this.image = "https://www.wowisclassic.com/media/CACHE/images/contents/6909/faa3d517-0066-4827-bfd8-6e4caa7a2d8c/c4015b50e01e9b94b61344a4cb279b21.png"
     }
 }
 
@@ -108,7 +109,7 @@ class Character {
             // console.log(this.activeAbility.attack);
             return this.activeAbility.attack;
         } else if (move === "pets") {
-            if (this.activePets.length > 1) {
+            if (this.activePets.length = 1) {
                 // console.log(this.activePets.attack);
                 return this.activePets.attack;
             } else {
@@ -207,10 +208,11 @@ const Character = require('./character');
 
 class Monk extends Character {
     constructor(name) {
-        super(name, "monk", 100, 5, 15);
+        super(name, "monk", 100, 15, 15);
         this.activeAbility = strike;
         this.activeWeapon = cestus;
         this.activePets.push(startingPet);
+        this.image = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f3810965-d444-49fe-860e-ea51d4e13361/d55gxxv-d15db62c-31dc-4915-8f73-3299bee89ada.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2YzODEwOTY1LWQ0NDQtNDlmZS04NjBlLWVhNTFkNGUxMzM2MVwvZDU1Z3h4di1kMTVkYjYyYy0zMWRjLTQ5MTUtOGY3My0zMjk5YmVlODlhZGEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.J3n_vPVyQNvVD5bBtB_bziKHQzQ0ZDLtghaEeVQO_ok"
     }
 }
 
@@ -227,7 +229,7 @@ module.exports = Pet;
 },{}],10:[function(require,module,exports){
 // starting Pet
 const Pet = require('./pet');
-const startingPet = new Pet("Pet", 10);
+const startingPet = new Pet("Pet", 15);
 
 // Spells
 const fireball = require('../abilities/fireball');
@@ -244,6 +246,8 @@ class Warlock extends Character {
         this.activeAbility = fireball;
         this.activeWeapon = staff;
         this.activePets.push(startingPet);
+        this.image = "https://www.wowisclassic.com/media/CACHE/images/contents/1523/ea18a28c-90fd-42f2-a867-965d65867cdc/dd55a63f44bd004898a01bfdcab9cec2.png"
+        // document.getElementById("warlockImage").src = this.image;
     }
 }
 
@@ -316,6 +320,11 @@ function displayCharacterInfo(character) {
     characterInfoString += `${character.getStatsString()}`;
     container.innerHTML = characterInfoString;
 
+
+    var selectedClassImage = character.image;
+    const imageContainer = document.getElementById("selectedCharacterImage");
+    imageContainer.src = selectedClassImage;
+
     const damageContainer = document.getElementById("damage-info");
     let damageInfoString = `Punch: ${character.getDamage("punch")}<br>`;
     damageInfoString += `Use Weapon: ${character.getDamage("weapon")}<br>`
@@ -335,6 +344,11 @@ function displayMobInfo(activeMob) {
     let mobInfoString = `Name: ${activeMob.getName()}<br>`;
     mobInfoString += `Health: ${activeMob.getHealth()}<br> Attack: ${activeMob.getAttack()}`;
     container.innerHTML = mobInfoString;
+
+    console.log(activeMob.image)
+    var activeMobImage = activeMob.image;
+    const imageContainer = document.getElementById("activeMobImage");
+    imageContainer.src = activeMobImage;
 }
 
 module.exports = displayMobInfo;
@@ -361,6 +375,9 @@ const displayMoveChoice = require('./displayMoveChoice');
 const displayMobInfo = require('./displayMobInfo');
 const toggleFightButton = require("./toggleFightButton");
 const toggleNextMobDisplay = require('./toggleNextMobDisplay');
+const Pet = require('./characters/pet');
+const { classNames } = require('./config/config');
+
 
 // const chooseMove = require("./chooseMove");
 
@@ -377,6 +394,14 @@ const warlockButton = document.getElementById("warlock");
 // get all characters with data-class character-select
 var characterSelection = document.querySelectorAll(".character-select");
 var moveSelection = document.querySelectorAll(".move-select");
+
+// inflict damage sound
+var sound = new Audio("https://www.fesliyanstudios.com/play-mp3/4036");
+var soundDeath = new Audio("https://soundboardguy.com/wp-content/uploads/2021/05/wilhelm-scream.mp3");
+
+// death animation
+// var imageRect = image.getBoundingClientRect();
+
 
 //my character in the game. changes game to game depending on choices mad by user
 let character;
@@ -396,13 +421,16 @@ document.addEventListener("click", function (event) {
         character = chooseClass(classChoice);
         toggleCharacterInfoDisplay();
         displayCharacterInfo(character);
+
         toggleMoveChoiceDisplay();
         displayMobInfo(activeMob);
+        classes.style.display = "none";
+        whole.style.display = "flex";
         // setActiveMob(activeMob);
 
 
 
-
+        console.log(character.getDamage(moveChoice));
 
     } else {
         console.log("Not a character select button")
@@ -439,19 +467,39 @@ function fight() {
             console.log("step3")
             activeMob.health = activeMob.health - character.getDamage(moveChoice);
             character.health = character.health - activeMob.attack;
+            selectedCharacterImage.classList.add("shake");
+            sound.play();
+            activeMobImage.classList.add("shake");
+            selectedCharacterImage.addEventListener("animationend", function () {
+                selectedCharacterImage.classList.remove("shake");
+            });
+            activeMobImage.addEventListener("animationend", function () {
+                activeMobImage.classList.remove("shake");
+            });
             displayCharacterInfo(character);
             displayMobInfo(activeMob);
             console.log(mobIteration)
             if (activeMob.health <= 0 && mobIteration < mobs.length - 1) {
                 console.log("You Won! Face Next mob?");
+                soundDeath.play();
+                overlayImage.style.display = "Inline-block";
+
+
+                //
                 displayMobInfo(activeMob);
                 fightButton.disabled = true;
                 nextMobButton.disabled = false;
                 toggleNextMobDisplay();
                 loadNextMob();
                 return;
-            } if (activeMob.health <= 0 && character.health >0 && mobIteration == mobs.length - 1) {
-                alert("You've won!");
+            } if (activeMob.health <= 0 && character.health > 0 && mobIteration == mobs.length - 1) {
+                soundDeath.play();
+                overlayImage.style.display = "Inline-block";
+
+                setTimeout(function () {
+                    alert("You've won!");
+                }, 1500);
+
                 return;
             } if (character.health <= 0) {
                 alert("You've died");
@@ -486,7 +534,7 @@ function loadNextMob() {
             displayMobInfo(activeMob);
             fightButton.disabled = false;
             nextMobButton.disabled = true;
-
+            overlayImage.style.display = "none";
         } else {
             console.log("Not the load next mob buton")
         }
@@ -496,15 +544,15 @@ function loadNextMob() {
 }
 
 
-},{"./chooseClass":11,"./displayCharacterInfo":13,"./displayMobInfo":14,"./displayMoveChoice":15,"./mobs/mobs":20,"./setActiveMob":22,"./toggleCharacterInfoDisplay":23,"./toggleFightButton":24,"./toggleMoveChoiceDisplay":26,"./toggleNextMobDisplay":27,"./waitForMovechoice":28}],17:[function(require,module,exports){
+},{"./characters/pet":9,"./chooseClass":11,"./config/config":12,"./displayCharacterInfo":13,"./displayMobInfo":14,"./displayMoveChoice":15,"./mobs/mobs":20,"./setActiveMob":22,"./toggleCharacterInfoDisplay":23,"./toggleFightButton":24,"./toggleMoveChoiceDisplay":26,"./toggleNextMobDisplay":27,"./waitForMovechoice":28}],17:[function(require,module,exports){
 const Mob = require("./mob")
 const dragon = new Mob("dragon", 20, 30);
-
+dragon.image = "https://eldenring.wiki.fextralife.com/file/Elden-Ring/remembrance_of_the_lichdragon_elden_ring_wiki_guide_200px.png"
 module.exports = dragon;
 },{"./mob":19}],18:[function(require,module,exports){
 const Mob = require("./mob")
 const goblin = new Mob("goblin", 10, 10);
-
+goblin.image = "https://iili.io/HYqFvoX.png"
 module.exports = goblin;
 
 // const goblinDEFAULT = { name: 'goblin', health: 10 };
@@ -548,7 +596,7 @@ module.exports = mobs;
 },{"./dragon":17,"./goblin":18,"./troll":21}],21:[function(require,module,exports){
 const Mob = require("./mob")
 const troll = new Mob("troll", 15, 15);
-
+troll.image = "https://cdn.staticneo.com/w/fallout/thumb/Super_Mutant_Overlord.png/330px-Super_Mutant_Overlord.png"
 module.exports = troll;
 },{"./mob":19}],22:[function(require,module,exports){
 const displayMobInfo = require("./displayMobInfo");
@@ -590,7 +638,7 @@ function toggleMobInfoDisplay() {
     const infoContainer = document.getElementById("mob-info-container");
     infoContainer.style.display = "Inline-block";
 
-    const infoPicture = document.getElementById("mob-picture");
+    const infoPicture = document.getElementById("activeMobImage");
     infoPicture.style.display = "Inline-block";
 
 }

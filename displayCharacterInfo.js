@@ -5,6 +5,11 @@ function displayCharacterInfo(character) {
     characterInfoString += `${character.getStatsString()}`;
     container.innerHTML = characterInfoString;
 
+
+    var selectedClassImage = character.image;
+    const imageContainer = document.getElementById("selectedCharacterImage");
+    imageContainer.src = selectedClassImage;
+
     const damageContainer = document.getElementById("damage-info");
     let damageInfoString = `Punch: ${character.getDamage("punch")}<br>`;
     damageInfoString += `Use Weapon: ${character.getDamage("weapon")}<br>`

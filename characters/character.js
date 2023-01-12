@@ -52,7 +52,7 @@ class Character {
             // console.log(this.activeAbility.attack);
             return this.activeAbility.attack;
         } else if (move === "pets") {
-            if (this.activePets.length > 1) {
+            if (this.activePets.length = 1) {
                 // console.log(this.activePets.attack);
                 return this.activePets.attack;
             } else {

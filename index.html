@@ -6,16 +6,16 @@
 
 
 <body>
-<header>
+    <header>
 
-    WELCOME TO MY GAME!
-    <br>
-    <div>
+        WELCOME TO MY GAME!
+        <br>
+        <div>
 
-    </div>
-    FOLLOW THE PROMPTS IN ORDER TO PICK A CLASS AND FIGHT THROUGH A SERIES OF MOBS!!!
-    <br>
-</header>
+        </div>
+        FOLLOW THE PROMPTS IN ORDER TO PICK A CLASS AND FIGHT THROUGH A SERIES OF MOBS!!!
+        <br>
+    </header>
 
 
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -24,11 +24,16 @@
     <div id="mob0Name"></div>
     <div id="mob1Name"></div>
     <div id="mob2Name"></div>
-    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    <h1>Choose a class</h1>
+
+
     <div id="classes">
+        <div>
+            <h1>Choose a class:</h1>
+        </div>
+
         <div id>
-            <img class="classCard" src="https://www.wowisclassic.com/media/CACHE/images/contents/6909/faa3d517-0066-4827-bfd8-6e4caa7a2d8c/c4015b50e01e9b94b61344a4cb279b21.png">
+            <img class="classCard"
+                src="https://www.wowisclassic.com/media/CACHE/images/contents/6909/faa3d517-0066-4827-bfd8-6e4caa7a2d8c/c4015b50e01e9b94b61344a4cb279b21.png">
             <button class="character-select" id="bandit" data-class="bandit">Bandit</button>
         </div>
         <div>
@@ -41,17 +46,14 @@
                 src="https://www.wowisclassic.com/media/CACHE/images/contents/1523/ea18a28c-90fd-42f2-a867-965d65867cdc/dd55a63f44bd004898a01bfdcab9cec2.png">
             <button class="character-select" id="warlock" data-class="warlock">Warlock</button>
         </div>
-        
+
     </div>
 
 
-    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-    <br>
-    <div id="combatInformation">
-        <!-- <div id="characterInfo"> -->
+    <div id="whole">
+        <div id="left">
+            <!-- <div id="characterInfo"> -->
             <div id="character-info-container" style="display:none">
                 <h1>Character Info</h1>
                 <div id="character-info"></div>
@@ -60,34 +62,67 @@
                 <h3>Damage Info</h3>
                 <div id="damage-info"></div>
             </div>
-        <!-- </div> -->
+            <!-- </div> -->
 
-        <div id="mobInfo">
-            <div id="mob-info-container" style="display:none;">
-                <h2>Mob Info</h2>
-                <div id="mob-info"></div>
-            </div>
-            <div>
-                <img id="mob-picture" style="width:200px" style="display:none"
-                src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/728f211c-d472-42ca-8ccd-b07bd65b6552/df41vbp-fe1debf4-65ae-4abd-9c08-adedcaa317b1.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzcyOGYyMTFjLWQ0NzItNDJjYS04Y2NkLWIwN2JkNjViNjU1MlwvZGY0MXZicC1mZTFkZWJmNC02NWFlLTRhYmQtOWMwOC1hZGVkY2FhMzE3YjEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.oRPDhLv1gdNW-yFfKKqGNTJxnCwGzr3S1tYJuOV-gog">
+            <div id="mobInfo">
+                <div id="mob-info-container" style="display:none;">
+                    <h2>Mob Info</h2>
+                    <div id="mob-info"></div>
+                </div>
+                <div>
+
+                </div>
             </div>
         </div>
 
-    </div>
-    <br>
-    <br>
-    <br>
-    <div id="move-select-container" style="display:none">
-        <button class="move-select" id="punch" data-class="punch">Punch</button>
-        <button class="move-select" id="weapon" data-class="weapon">Use Weapon</button>
-        <button class="move-select" id="ability" data-class="ability">Use Ability</button>
-        <button class="move-select" id="pets" data-class="pets">Use Pet</button>
-    </div>
 
-    <div id="move-info"></div>
-    <button class="fight-select" id="fightButton" data-class="fights" style="display:none">Use Selected Ability</button>
-    <button class="next-mob-select" id="nextMobButton" data-class="next-mob-select" style="display:none">Face Next
-        Mob</button>
+        <div id="right">
+
+            <div class="characterArena">
+                <img id="selectedCharacterImage">
+
+            </div>
+            <div class="mobArena">
+                <img id="activeMobImage">
+                <img src="https://png.pngtree.com/png-vector/20210529/ourlarge/pngtree-defeat-game-name-plate-graphics-png-image_3386121.jpg"
+                    id="overlayImage" style="display:none">
+            </div>
+
+        </div>
+    </div>
+    <br>
+
+    <div id="moveContainer">
+        <div id="move-select-container" style="display:none">
+            <button class="move-select" id="punch" data-class="punch">Punch</button>
+            <button class="move-select" id="weapon" data-class="weapon">Use Weapon</button>
+            <button class="move-select" id="ability" data-class="ability">Use Ability</button>
+            <button class="move-select" id="pets" data-class="pets">Use Pet</button>
+        </div>
+        <div id="move-info"></div>
+        <button class="fight-select" id="fightButton" data-class="fights" style="display:none">Use Selected
+            Ability</button>
+        <button class="next-mob-select" id="nextMobButton" data-class="next-mob-select" style="display:none">Face Next
+            Mob</button>
+    </div>
+    <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <br>
     <br>
     <br>

@@ -7,6 +7,11 @@ function displayMobInfo(activeMob) {
     let mobInfoString = `Name: ${activeMob.getName()}<br>`;
     mobInfoString += `Health: ${activeMob.getHealth()}<br> Attack: ${activeMob.getAttack()}`;
     container.innerHTML = mobInfoString;
+
+    console.log(activeMob.image)
+    var activeMobImage = activeMob.image;
+    const imageContainer = document.getElementById("activeMobImage");
+    imageContainer.src = activeMobImage;
 }
 
 module.exports = displayMobInfo;

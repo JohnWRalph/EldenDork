@@ -11,6 +11,9 @@ const displayMoveChoice = require('./displayMoveChoice');
 const displayMobInfo = require('./displayMobInfo');
 const toggleFightButton = require("./toggleFightButton");
 const toggleNextMobDisplay = require('./toggleNextMobDisplay');
+const Pet = require('./characters/pet');
+const { classNames } = require('./config/config');
+
 
 // const chooseMove = require("./chooseMove");
 
@@ -27,6 +30,14 @@ const warlockButton = document.getElementById("warlock");
 // get all characters with data-class character-select
 var characterSelection = document.querySelectorAll(".character-select");
 var moveSelection = document.querySelectorAll(".move-select");
+
+// inflict damage sound
+var sound = new Audio("https://www.fesliyanstudios.com/play-mp3/4036");
+var soundDeath = new Audio("https://soundboardguy.com/wp-content/uploads/2021/05/wilhelm-scream.mp3");
+
+// death animation
+// var imageRect = image.getBoundingClientRect();
+
 
 //my character in the game. changes game to game depending on choices mad by user
 let character;
@@ -46,13 +57,16 @@ document.addEventListener("click", function (event) {
         character = chooseClass(classChoice);
         toggleCharacterInfoDisplay();
         displayCharacterInfo(character);
+
         toggleMoveChoiceDisplay();
         displayMobInfo(activeMob);
+        classes.style.display = "none";
+        whole.style.display = "flex";
         // setActiveMob(activeMob);
 
 
 
-
+        console.log(character.getDamage(moveChoice));
 
     } else {
         console.log("Not a character select button")
@@ -89,19 +103,39 @@ function fight() {
             console.log("step3")
             activeMob.health = activeMob.health - character.getDamage(moveChoice);
             character.health = character.health - activeMob.attack;
+            selectedCharacterImage.classList.add("shake");
+            sound.play();
+            activeMobImage.classList.add("shake");
+            selectedCharacterImage.addEventListener("animationend", function () {
+                selectedCharacterImage.classList.remove("shake");
+            });
+            activeMobImage.addEventListener("animationend", function () {
+                activeMobImage.classList.remove("shake");
+            });
             displayCharacterInfo(character);
             displayMobInfo(activeMob);
             console.log(mobIteration)
             if (activeMob.health <= 0 && mobIteration < mobs.length - 1) {
                 console.log("You Won! Face Next mob?");
+                soundDeath.play();
+                overlayImage.style.display = "Inline-block";
+
+
+                //
                 displayMobInfo(activeMob);
                 fightButton.disabled = true;
                 nextMobButton.disabled = false;
                 toggleNextMobDisplay();
                 loadNextMob();
                 return;
-            } if (activeMob.health <= 0 && character.health >0 && mobIteration == mobs.length - 1) {
-                alert("You've won!");
+            } if (activeMob.health <= 0 && character.health > 0 && mobIteration == mobs.length - 1) {
+                soundDeath.play();
+                overlayImage.style.display = "Inline-block";
+
+                setTimeout(function () {
+                    alert("You've won!");
+                }, 1500);
+
                 return;
             } if (character.health <= 0) {
                 alert("You've died");
@@ -136,7 +170,7 @@ function loadNextMob() {
             displayMobInfo(activeMob);
             fightButton.disabled = false;
             nextMobButton.disabled = true;
-
+            overlayImage.style.display = "none";
         } else {
             console.log("Not the load next mob buton")
         }

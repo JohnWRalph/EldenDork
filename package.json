@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JohnWRalph/game#readme",
   "dependencies": {
     "browserify": "^17.0.0",
+    "discord": "^0.8.2",
     "esmify": "^2.1.1",
     "prompt-promise": "^1.0.3"
   }
