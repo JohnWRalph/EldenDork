@@ -40,7 +40,8 @@ var soundDeath = new Audio("https://soundboardguy.com/wp-content/uploads/2021/05
 
 
 //my character in the game. changes game to game depending on choices mad by user
-let character;
+// const character 
+
 let moveChoice;
 let activeMob;
 let mobIteration = 0;

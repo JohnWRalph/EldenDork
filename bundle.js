@@ -264,7 +264,7 @@ function chooseClass(x) {
 
         console.log("You've chosen Bandit! Here are your beginning stats:\n");
 
-        const character = new Bandit('myBandit')
+        character = new Bandit('myBandit')
         const characterSelection = document.querySelectorAll(".character-select");
 
         characterSelection.forEach(button => {
@@ -406,7 +406,8 @@ var soundDeath = new Audio("https://soundboardguy.com/wp-content/uploads/2021/05
 
 
 //my character in the game. changes game to game depending on choices mad by user
-let character;
+// const character 
+
 let moveChoice;
 let activeMob;
 let mobIteration = 0;
@@ -554,7 +555,7 @@ module.exports = dragon;
 },{"./mob":19}],18:[function(require,module,exports){
 const Mob = require("./mob")
 const goblin = new Mob("goblin", 10, 10);
-goblin.image = "https://iili.io/HYqFvoX.png"
+goblin.image = "https://toppng.com/uploads/preview/clash-of-clans-goblin-115494763627rf8cpiu9s.png"
 module.exports = goblin;
 
 // const goblinDEFAULT = { name: 'goblin', health: 10 };

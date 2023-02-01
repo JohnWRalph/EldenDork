@@ -7,7 +7,7 @@ function chooseClass(x) {
 
         console.log("You've chosen Bandit! Here are your beginning stats:\n");
 
-        const character = new Bandit('myBandit')
+        character = new Bandit('myBandit')
         const characterSelection = document.querySelectorAll(".character-select");
 
         characterSelection.forEach(button => {

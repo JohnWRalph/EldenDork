@@ -1,6 +1,6 @@
 const Mob = require("./mob")
 const goblin = new Mob("goblin", 10, 10);
-goblin.image = "https://iili.io/HYqFvoX.png"
+goblin.image = "https://toppng.com/uploads/preview/clash-of-clans-goblin-115494763627rf8cpiu9s.png"
 module.exports = goblin;
 
 // const goblinDEFAULT = { name: 'goblin', health: 10 };
